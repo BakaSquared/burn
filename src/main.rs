@@ -2,7 +2,10 @@
 extern crate clap;
 extern crate ansi_term;
 
-use ansi_term::{Style, enable_ansi_support, Colour};
+#[cfg(windows)]
+use ansi_term::enable_ansi_support;
+
+use ansi_term::{Style, Colour};
 
 fn valid_verbosity(arg: String) -> Result<(), String> {
     if arg.contains("minimal") | arg.contains("full") | arg.contains("debug") {
